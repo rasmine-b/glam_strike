@@ -22,4 +22,11 @@ class BattleUi:
         popup.place(x=x, y=y)
         animate_float(popup, distance = 50, speed = 20)
 
-        
+    def animate_float(widget, distance = 50, speed = 20):
+        def float_step(step = 0):
+            if step >= distance:
+                widget.destroy()
+            else:
+                widget.place_config(y=widget.winfo_y() - 1)
+                widget.after(speed, lambda: float_step(step + 1))
+        float_step()
