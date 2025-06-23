@@ -144,7 +144,16 @@ class GlamStrike:
         self.attack_btn.config(state='normal')
         self.heal_btn.config(state='normal')
         self.special_btn.config(state='normal')
-        
+
+    def player_turn_wrapper(self, func):
+        self.disabled_buttons()
+        func()
+        self.ui.update_health(self.player_health, self.enemy_health, self.player, self.enemy)
+        if not self.enemy.is_alive():
+            self.ui.log_message(self.log, "You slayed the runway! 💖", "system")
+            self.end_game("Victory 👑")
+        else:
+            self.root.after(1000, self.enemy_turn)
     
 
 
