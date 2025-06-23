@@ -17,3 +17,6 @@ class Character:
         reduced = max(damage - self.defense, 0)
         self.health -= reduced
         return reduced
+    
+    def deal_damage(self):
+        return random.randint(self.attack - 2, self.attack + 2)
