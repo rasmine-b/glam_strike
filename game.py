@@ -85,3 +85,12 @@ class GlamStrike:
                 font=('Comic Sans MS', 14, 'bold'),
                 bg="#e0ccff", fg="#330066",
                 command=self.random_opponent).place(relx=0.5, rely=0.8, anchor="center")
+        
+    def start_battle(self, opponent_name):
+        self.clear_window()
+        self.player = self.selected_player
+        self.enemy = self.characters[opponent_name]()
+        self.create_battle_ui()
+        self.ui.update_health(self.player_health, self.enemy_health, self.player, self.enemy)
+
+    
