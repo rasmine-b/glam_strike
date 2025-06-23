@@ -29,17 +29,22 @@ class BattleUi:
         popup.place(x=x, y=y)
         self.animate_float(popup)
 
-    def animate_float(self, widget, distance = 50, speed = 20):
-        def float_step(step = 0):
+    def animate_float(self, widget, distance=40, speed=20):
+        def float_step(step=0):
             if step >= distance:
                 widget.destroy()
             else:
                 widget.place_configure(y=widget.winfo_y() - 1)
                 widget.after(speed, lambda: float_step(step + 1))
         float_step()
-    
-    def shake_widget(self, widget, intensity=3, duration=200):
-        orig_x = widget.winfo_x()
+
+    def shake_widget(self, widget, intensity=8, duration=200):
+        place_info = widget.place_info()
+        if "relx" in place_info:
+            return
+
+        orig_x = int(place_info.get("x", 0))
+
         def shake(count=0):
             if count >= duration:
                 widget.place_configure(x=orig_x)
