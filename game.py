@@ -206,5 +206,11 @@ class GlamStrike:
         else:
             self.root.after(5000, self.enable_buttons)
 
+    def end_game(self, result):
+        self.disable_buttons()
+        self.ui.log_message(self.log, "\n🎮 What would you like to do next?", "system")
+
+        tk.Button(self.bg_canvas, text="🔁 Choose Another Opponent", font=('Comic Sans MS', 12, 'bold'), bg="#ffd6e8", command=self.root.destroy).place(relx=0.65, rely=0.9, anchor="center")
+        messagebox.showinfo("🎀 Battle Result", result)
 
     
