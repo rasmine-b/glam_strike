@@ -11,7 +11,7 @@ from hwoarang import Hwoarang
 from kazuya import Kazuya
 from lee import Lee
 
-from battle_ui import BatteleUi
+from battle_ui import BattleUi
 
 class GlamStrike:
     def __init__(self, root):
@@ -72,7 +72,7 @@ class GlamStrike:
         tk.Label(self.bg_canvas, text="🤜 Choose Your Opponent or Randomize 🤛",
                  font=('Comic Sans MS', 24, 'bold'), fg="#3366cc", bg="#ffe6f0").place(relx=0.5, rely=0.1, anchor="center")
         
-        other_names = [name for name in self.characters if self.character[n] != type(self.selecter_player)]
+        other_names = [name for name in self.characters if self.character[name] != type(self.selecter_player)]
 
         for i, name in enumerate(other_names):
             tk.Button(self.bg_canvas, text=name, width=20, height=2,
