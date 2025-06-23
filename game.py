@@ -140,6 +140,12 @@ class GlamStrike:
         self.heal_btn.config(state='disabled')
         self.special_btn.config(state='disabled')
     
+    def enable_buttons(self):
+        self.attack_btn.config(state='normal')
+        self.heal_btn.config(state='normal')
+        self.special_btn.config(state='normal')
+        
     
+
 
     
