@@ -154,6 +154,16 @@ class GlamStrike:
             self.end_game("Victory 👑")
         else:
             self.root.after(1000, self.enemy_turn)
+        
+    def attack(self):
+        def _attack():
+            damage = self.player.deal_damage()
+            actual = self.enemy.take_damage(damage)
+            self.ui.log_message(self.log, f"{self.player.name} attacks for {actual} 💥", "player")
+            self.ui.show_damage_popup(self.bg_canvas, 700, 200, actual, color="#ff0033")
+            self.ui.shake_widget(self.enemy_label)
+        
+        self.player_turn_wrapper(_attack)
     
 
 
