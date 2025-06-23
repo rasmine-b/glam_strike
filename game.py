@@ -15,6 +15,7 @@ from battle_ui import BattleUi
 
 class GlamStrike:
     def __init__(self, root):
+        self.root = root
         self.root.title("Glam Strike: Fierce & Flawless")
         self.root.attributes('-fullscreen', True)
 
@@ -72,7 +73,7 @@ class GlamStrike:
         tk.Label(self.bg_canvas, text="🤜 Choose Your Opponent or Randomize 🤛",
                  font=('Comic Sans MS', 24, 'bold'), fg="#3366cc", bg="#ffe6f0").place(relx=0.5, rely=0.1, anchor="center")
         
-        other_names = [name for name in self.characters if self.character[name] != type(self.selecter_player)]
+        other_names = [name for name in self.characters if type(self.characters[name]()) != type(self.selected_player)]
 
         for i, name in enumerate(other_names):
             tk.Button(self.bg_canvas, text=name, width=20, height=2,
@@ -146,7 +147,7 @@ class GlamStrike:
         self.special_btn.config(state='normal')
 
     def player_turn_wrapper(self, func):
-        self.disabled_buttons()
+        self.disable_buttons()
         func()
         self.ui.update_health(self.player_health, self.enemy_health, self.player, self.enemy)
         if not self.enemy.is_alive():
@@ -209,8 +210,9 @@ class GlamStrike:
     def end_game(self, result):
         self.disable_buttons()
         self.ui.log_message(self.log, "\n🎮 What would you like to do next?", "system")
-
-        tk.Button(self.bg_canvas, text="🔁 Choose Another Opponent", font=('Comic Sans MS', 12, 'bold'), bg="#ffd6e8", command=self.root.destroy).place(relx=0.65, rely=0.9, anchor="center")
+        tk.Button(self.bg_canvas, text="🔁 Choose Another Opponent", font=('Comic Sans MS', 12, 'bold'),
+              bg="#ffd6e8", command=self.show_character_selection).place(relx=0.65, rely=0.9, anchor="center")
         messagebox.showinfo("🎀 Battle Result", result)
+
 
     
