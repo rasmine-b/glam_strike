@@ -10,7 +10,10 @@ class BattleUi:
 
     def log_message(self, log_widget, message, tag=None):
         log_widget.config(state='normal')
-        log_widget.insert('end', message + '\n', tag)
+        if tag:
+            log_widget.insert('end', message + '\n', tag)
+        else:
+            log_widget.insert('end', message + '\n')
         log_widget.see('end')
         log_widget.config(state='disabled')
 
