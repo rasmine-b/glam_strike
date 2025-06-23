@@ -20,3 +20,6 @@ class Character:
     
     def deal_damage(self):
         return random.randint(self.attack - 2, self.attack + 2)
+    
+    def special_attack(self):
+        return random.randint(self.attack + 5, self.attack + 10)
