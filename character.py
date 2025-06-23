@@ -9,3 +9,6 @@ class Character:
         self.defense = defense
         self.special_name = special_name
         self.turn_counter = 0
+
+    def is_alive(self):
+        return self.health > 0
