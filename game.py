@@ -172,5 +172,18 @@ class GlamStrike:
             self.ui.log_message(self.log, f"{self.player.name} heals {heal_amount} 💅", "heal")
         self.player_turn_wrapper(_heal)   
 
+    def special_move(self):
+        def _special():
+            if self.player.turn_counter % 3 == 0:
+                damage = self.player.special_attack()
+                actual = self.enemy.take_damage(damage)
+                self.ui.log_message(self.log, f"{self.player.name} used {self.player.special_name} for {actual} ✨", "player")
+                self.ui.show_damage_popup(self.bg_canvas, 700, 200, actual, color="#9900cc")
+                self.ui.shake_widget(self.enemy_label)
+            else:
+                self.ui.log_message(self.log, "✨ Special not ready yet! (Every 3 turns)", "system")
+            self.player.turn_counter += 1
+        self.player_turn_wrapper(_special)
+
 
     
