@@ -92,5 +92,11 @@ class GlamStrike:
         self.enemy = self.characters[opponent_name]()
         self.create_battle_ui()
         self.ui.update_health(self.player_health, self.enemy_health, self.player, self.enemy)
+    
+    def random_opponent(self):
+        opponent_choices = [name for name in self.characters if type(self.characters[name]()) != type(self.selected_player)]
+        self.start_battle(random.choice(opponent_choices))
+    
+
 
     
