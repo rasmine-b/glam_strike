@@ -135,6 +135,11 @@ class GlamStrike:
         self.ui.style_log_widget(self.log)
         self.enable_buttons()
 
-
+    def disable_buttons(self):
+        self.attack_btn.config(state='disabled')
+        self.heal_btn.config(state='disabled')
+        self.special_btn.config(state='disabled')
+    
+    
 
     
