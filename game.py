@@ -40,4 +40,12 @@ class GlamStrike:
         for widget in self.bg_canvas.winfo_children():
             widget.destroy()
     
-    
+    def show_character_selection(self):
+        self.clear_window()
+        self.selected_player = None
+
+        tk.Label(self.bg_canvas, text="✨ Choose Your Fighter ✨", font=('Comic Sans MS', 28, 'bold'),
+                 fg="#cc00cc", bg="#ffe6f0"). place(relx=0.5, rely=0.08, anchor="center")
+        
+        girl_names = ["Chloe", "Lili", "Asuka", "Xiaoyu"]
+        boy_names = ["Jin", "Hwoarang", "Kazuya", "Lee"]
