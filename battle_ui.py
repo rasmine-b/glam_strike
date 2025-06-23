@@ -30,3 +30,14 @@ class BattleUi:
                 widget.place_config(y=widget.winfo_y() - 1)
                 widget.after(speed, lambda: float_step(step + 1))
         float_step()
+    
+    def shake_widget(widget, intensity=3, duration=200):
+        orig_x = widget.winfo_x()
+        def shake(count=0):
+            if count >= duration:
+                widget.place_configure(x=orig_x)
+            else:
+                offset = intensity if count % 2 == 0 else -intensity
+                widget.place_configure(x=orig_x + offset)
+                widget.after(10, lambda: shake(count + 10))
+        shake()
