@@ -62,3 +62,7 @@ class GlamStrike:
                       activebackground="#b3e0ff",
                       command=lambda n=name: self.select_player(n)).place(relx=0.7, rely=0.25 + i * 0.1, anchor="center")
         
+    def select_player(self, name):
+        self.selected_player = self.characters[name]()
+        self.choose_opponent_screen()
+        
