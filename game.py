@@ -97,6 +97,44 @@ class GlamStrike:
         opponent_choices = [name for name in self.characters if type(self.characters[name]()) != type(self.selected_player)]
         self.start_battle(random.choice(opponent_choices))
     
+    def create_battle_ui(self):
+        tk.Label(self.bg_canvas, text="💥 Battle Begins! 💥", font=("Comic Sans MS", 28, 'bold'), fg="#cc0099", bg="#ffe6f0").place(relx=0.5, rely=0.05, anchor="center")
+        self.player_label = tk.Label(self.bg_canvas, text=self.player.name, font=('Comic Sans MS', 18, 'bold'),
+                                     fg="#ff3399", bg="#ffe6f0")
+        self.player_label.place(relx=0.2, rely=0.15)
+        self.enemy_label = tk.Label(self.bg_canvas, text=self.enemy.name, font=('Comic Sans MS', 18, 'bold'),
+                                    fg="#9900cc", bg="#ffe6f0")
+        self.enemy_label.place(relx=0.7, rely=0.15)
+        self.player_health = tk.Label(self.bg_canvas, text="", font=('Comic Sans MS', 14),
+                                      fg="#ff0066", bg="#ffe6f0")
+        self.player_health.place(relx=0.2, rely=0.2)
+        self.enemy_health = tk.Label(self.bg_canvas, text="", font=('Comic Sans MS', 14),
+                                     fg="#8000ff", bg="#ffe6f0")
+        self.enemy_health.place(relx=0.7, rely=0.2)
+        self.attack_btn = tk.Button(self.bg_canvas, text="💥 Attack", command=self.attack,
+                                    font=('Comic Sans MS', 14, 'bold'),
+                                    bg="#ffb3d9", activebackground="#ff80bf", width=15)
+        self.attack_btn.place(relx=0.2, rely=0.35)
+        self.heal_btn = tk.Button(self.bg_canvas, text="💗 Heal", command=self.heal,
+                                  font=('Comic Sans MS', 14, 'bold'),
+                                  bg="#ffccff", activebackground="#ffb3ff", width=15)
+        self.heal_btn.place(relx=0.4, rely=0.35)
+        self.special_btn = tk.Button(self.bg_canvas, text="✨ Special", command=self.special_move,
+                                     font=('Comic Sans MS', 14, 'bold'),
+                                     bg="#e0b3ff", activebackground="#cc99ff", width=15)
+        self.special_btn.place(relx=0.6, rely=0.35)
+
+        self.exit_btn = tk.Button(self.bg_canvas, text="Exit", command=self.root.destroy,
+                                  font=('Comic Sans MS', 12), bg="#ffd6e8")
+        self.exit_btn.place(relx=0.9, rely=0.05)
+
+        self.log = tk.Text(self.bg_canvas, height=12, width=80, state='disabled',
+                           font=('Comic Sans MS', 12), bg="#fff0f5")
+        self.log.place(relx=0.5, rely=0.65, anchor="center")
+
+        self.ui.style_log_widget(self.log)
+        self.enable_buttons()
+
 
 
     
