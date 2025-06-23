@@ -184,6 +184,27 @@ class GlamStrike:
                 self.ui.log_message(self.log, "✨ Special not ready yet! (Every 3 turns)", "system")
             self.player.turn_counter += 1
         self.player_turn_wrapper(_special)
+    
+    def enemy_turn(self):
+        if not self.enemy.is_alive():
+            return
+        move = random.choice(["attack", "attack", "heal"])
+        if move == "attack":
+            damage = self.enemy.deal_damage()
+            actual = self.player.take_damage(damage)
+            self.ui.log_message(self.log, f"{self.enemy.name} strikes back for {actual} ⚔️", "enemy")
+            self.ui.show_damage_popup(self.bg_canvas, 250, 200, actual, color="#6600cc")
+            self.ui.shake_widget(self.player_label)
+        else:
+            heal = random.randint(8, 15)
+            self.enemy.health = min(self.enemy.health + heal, self.enemy.max_health)
+            self.ui.log_message(self.log, f"{self.enemy.name} restored {heal} 🧘‍♂️", "heal")
+        self.ui.update_health(self.player_health, self.enemy_health, self.player, self.enemy)
+        if not self.player.is_alive():
+            self.ui.log_message(self.log, "You lost your sparkle... 💔", "system")
+            self.end_game("Defeat 😭")
+        else:
+            self.root.after(5000, self.enable_buttons)
 
 
     
