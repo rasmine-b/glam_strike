@@ -12,3 +12,8 @@ class Character:
 
     def is_alive(self):
         return self.health > 0
+
+    def take_damage(self, damage):
+        reduced = max(damage - self.defense, 0)
+        self.health -= reduced
+        return reduced
