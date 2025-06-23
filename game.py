@@ -35,3 +35,9 @@ class GlamStrike:
         }
 
         self.show_character_selection()
+    
+    def clear_window(self):
+        for widget in self.bg_canvas.winfo_children():
+            widget.destroy()
+    
+    
