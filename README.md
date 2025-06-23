@@ -49,10 +49,23 @@ Choose your fighter, unleash stylish special moves, and dominate the arena with 
 
 ---
 
+
 ## 🛠️ TECH STACK
 
 - 🐍 Python 3
 - 🖼️ Tkinter (for the full GUI experience)
+
+---
+## 💻 HOW TO RUN GLAM STRIKE
+📥 Download the game by cloning the repo or downloading the ZIP file and extracting it.
+
+📂 Navigate to the game folder (glam-strike) on your computer.
+
+🐍 Make sure Python 3 is installed by running python --version in your terminal or command prompt.
+
+▶️ Launch the game by typing python main.py inside the folder — it will open in fullscreen!
+
+🧹 Optional cleanup: Delete any __pycache__ folders created after running the game — they’re safe to remove and won’t affect gameplay.
 
 ---
 
