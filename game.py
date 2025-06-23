@@ -22,3 +22,16 @@ class GlamStrike:
 
         self.bg_canvas = tk.Canvas(root, bg="#ffe6f0", highlightthickness=0)
         self.bg_canvas.pack(fill="both", expand=True)
+
+        self.characters = {
+            "Chloe": Chloe,
+            "Lili": Lili,
+            "Asuka": Asuka,
+            "Xiaoyu": Xiaoyu,
+            "Jin": Jin,
+            "Hwoarang": Hwoarang,
+            "Kazuya": Kazuya,
+            "Lee": Lee
+        }
+
+        self.show_character_selection()
