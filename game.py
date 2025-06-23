@@ -165,6 +165,12 @@ class GlamStrike:
         
         self.player_turn_wrapper(_attack)
     
+    def heal(self):
+        def _heal():
+            heal_amount = random.randint(10, 20)
+            self.player.health = min(self.player.health + heal_amount, self.player.max_health) 
+            self.ui.log_message(self.log, f"{self.player.name} heals {heal_amount} 💅", "heal")
+        self.player_turn_wrapper(_heal)   
 
 
     
