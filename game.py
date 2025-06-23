@@ -49,3 +49,16 @@ class GlamStrike:
         
         girl_names = ["Chloe", "Lili", "Asuka", "Xiaoyu"]
         boy_names = ["Jin", "Hwoarang", "Kazuya", "Lee"]
+    
+        for i, name in enumerate(girl_names):
+            tk.Button(self.bg_canvas, text=name, width=20, height=2,
+                      font=('Comic Sans MS', 14, 'bold'), bg="#ffcce6", fg="#b30059",
+                      activebackground="#ffb3d9",
+                      command=lambda n=name: self.select_player(n)).place(relx=0.3, rely=0.25 + i * 0.1, anchor="center")
+
+        for i, name in enumerate(boy_names):
+            tk.Button(self.bg_canvas, text=name, width=20, height=2,
+                      font=('Comic Sans MS', 14, 'bold'), bg="#cceeff", fg="#004466",
+                      activebackground="#b3e0ff",
+                      command=lambda n=name: self.select_player(n)).place(relx=0.7, rely=0.25 + i * 0.1, anchor="center")
+        
