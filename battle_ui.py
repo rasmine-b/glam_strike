@@ -17,4 +17,9 @@ class BattleUi:
         widget.tag_config("heal", foreground="#009966", font=("Comic Sans MS", 12, "italic"))
         widget.tag_config("system", foreground="#999999", font=("Comic Sans MS", 11))
 
+    def show_damage_popup(canvas, x, y, damage, color="#ff0000"):
+        popup = tk.Label(canvas, text=f"-{damage}", font=("Comic Sans MS", 16, "bold"))
+        popup.place(x=x, y=y)
+        animate_float(popup, distance = 50, speed = 20)
+
         
